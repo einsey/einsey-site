@@ -27,6 +27,37 @@
   [data-post-scroll] { scrollbar-width: thin; scrollbar-color: color-mix(in srgb, #6B1F2E 22%, transparent) transparent; }
   [data-post-scroll]::-webkit-scrollbar { width: 6px; }
   [data-post-scroll]::-webkit-scrollbar-thumb { background: color-mix(in srgb, #6B1F2E 20%, transparent); border-radius: 999px; }
+  html, body { overflow-x: hidden; }
+  @media (max-width: 1240px) {
+    [data-m-hero] { width: auto !important; height: auto !important; display: flex !important; flex-direction: column; }
+    [data-m-hero-top] { width: auto !important; height: auto !important; }
+    [data-m-hero-top] h1 { position: static !important; padding: 8px 0 22px; }
+    [data-m-headshot] { position: relative !important; left: auto !important; top: auto !important; width: min(420px, 80%) !important; height: auto !important; align-self: center; order: 3; margin-top: 10px; }
+    [data-m-blob] { display: none !important; }
+  }
+  @media (max-width: 760px) {
+    [data-m-navin] { padding: 10px 16px 8px !important; flex-direction: column; align-items: stretch !important; gap: 8px !important; }
+    [data-m-brand] { width: 36px !important; height: 36px !important; font-size: 15px !important; align-self: center; }
+    [data-m-navlinks] { gap: 6px !important; justify-content: space-between; overflow-x: auto; scrollbar-width: none; }
+    [data-m-navlinks]::-webkit-scrollbar { display: none; }
+    [data-m-navlinks] [data-nav] { font-size: 10px !important; letter-spacing: 0.1em !important; padding: 8px 4px; white-space: nowrap; }
+    [data-m-navlinks] [data-cta] { font-size: 10px !important; padding: 7px 12px !important; white-space: nowrap; }
+    [data-m-pad] { padding-left: 18px !important; padding-right: 18px !important; padding-top: 64px !important; padding-bottom: 64px !important; }
+    [data-m-header] { padding: 26px 18px 0 !important; }
+    [data-m-mast] { font-size: 10px !important; letter-spacing: 0.12em !important; }
+    [data-m-mast] span:nth-child(2) { display: none; }
+    [data-m-1col] { grid-template-columns: minmax(0, 1fr) !important; }
+    [data-m-edu-head] { padding: 26px 20px 20px !important; gap: 16px !important; }
+    [data-m-edu-body] { padding: 4px 20px 10px !important; }
+    [data-m-deckwrap] { padding: 0 !important; }
+    [data-m-deck] { height: 600px !important; }
+    [data-m-deck] [data-post] { width: calc(100% - 8px) !important; height: 580px !important; }
+    [data-m-deck-arrow] { top: auto !important; bottom: -64px; transform: none !important; }
+    [data-m-deck-arrow][aria-label^="Previous"] { left: calc(50% - 58px) !important; }
+    [data-m-deck-arrow][aria-label^="Next"] { right: calc(50% - 58px) !important; }
+    [data-m-dots] { margin-top: 84px !important; }
+    [data-m-timeline] { padding: 0 !important; }
+  }
 </style>
 <script async="" src="https://www.instagram.com/embed.js"></script>
 </helmet>
@@ -35,9 +66,9 @@
 
   <!-- ============ NAV ============ -->
   <nav style="position: sticky; top: 0; z-index: 120; background: color-mix(in srgb, var(--maroon,#6B1F2E) 96%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid color-mix(in srgb, var(--gold,#C2A14D) 55%, transparent);">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 14px 40px; display: flex; align-items: center; justify-content: space-between;">
-      <a href="#top" style="text-decoration: none; font-family: 'Bodoni Moda', serif; font-size: 21px; letter-spacing: 0.16em; color: var(--gold,#E7C66B);">Personal Website</a>
-      <div style="display: flex; align-items: center; gap: 30px;">
+    <div data-m-navin="" style="max-width: 1200px; margin: 0 auto; padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+      <a href="#top" data-m-brand="" aria-label="Einsteinia Socrates, home" style="text-decoration: none; display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 44px; height: 44px; border: 1.5px solid var(--gold,#E7C66B); border-radius: 50%; font-family: 'Bodoni Moda', serif; font-size: 18px; font-weight: 600; font-style: italic; letter-spacing: 0.02em; color: var(--gold,#E7C66B);">ES</a>
+      <div data-m-navlinks="" style="display: flex; align-items: center; gap: 30px;">
         <a href="#posts" data-nav="" style="text-decoration: none; color: #F1D9DE; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;">Updates</a>
         <a href="#experience" data-nav="" style="text-decoration: none; color: #F1D9DE; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;">Experience</a>
         <a href="#education" data-nav="" style="text-decoration: none; color: #F1D9DE; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;">Education</a>
@@ -50,27 +81,27 @@
   
 
   <!-- ============ STAT STRIP ============ -->
-  <header id="top" style="background: #F7EEE7; padding: 52px 40px 0;">
+  <header id="top" data-m-header="" style="background: #F7EEE7; padding: 52px 40px 0;">
     <div style="max-width: 1200px; margin: 0 auto;">
       <!-- masthead line -->
-      <div data-reveal="" style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--maroon,#6B1F2E); border-bottom: 1px solid var(--gold,#C2A14D); padding-bottom: 14px;">
-        <span>Portfolio — Vol. 01</span>
+      <div data-reveal="" data-m-mast="" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--maroon,#6B1F2E); border-bottom: 1px solid var(--gold,#C2A14D); padding-bottom: 14px;">
+        <span>Portfolio · Vol. 01</span>
         <span style="color: #9E3B49;">Business Analytics &amp; AI</span>
         <span>Purdue ’28</span>
-      </div><div data-reveal="" style="position: relative; overflow: hidden; padding-top: 14px; width: 1198px; height: 863px">
-        <div style="position: relative; height: 230px; width: 1176px">
+      </div><div data-reveal="" data-m-hero="" style="position: relative; overflow: hidden; padding-top: 14px; width: 1198px; height: 863px">
+        <div data-m-hero-top="" style="position: relative; height: 230px; width: 1176px">
           <h1 style="position: absolute; left: 3px; top: 6px; font-family: 'Bodoni Moda', serif; font-weight: 700; font-size: clamp(56px, 8.4vw, 120px); line-height: 0.86; margin: 0; color: #2A1118; letter-spacing: -0.01em; z-index: 1">EINSTEINIA<br>SOCRATES</h1>
           
           
         </div><div style="max-width: 54ch; padding: 0 0 30px;">
           <p style="font-size: 14.5px; line-height: 1.75; color: #6E3540; margin: 0 0 16px; text-wrap: pretty;">
-            Named after two of history's most iconic thinkers — Einstein, who reshaped how we understand the universe, and Socrates, who reshaped how we understand ourselves — I'm not a physicist or philosopher. But I love what their names represent: curiosity, questioning, and pushing ideas further.
+            Named after two of history's most iconic thinkers: Einstein, who reshaped how we understand the universe, and Socrates, who reshaped how we understand ourselves. I'm not a physicist or philosopher. But I love what their names represent: curiosity, questioning, and pushing ideas further.
           </p>
           <p style="font-size: 14.5px; line-height: 1.75; color: #6E3540; margin: 0 0 16px; text-wrap: pretty;">
             That's why I chose business analytics and why I'm passionate about artificial intelligence. Analytics gives me the <em>how</em>. AI gives me the <em>what's next</em>. Together, they let me build tools and ideas that actually help people.
           </p>
           <p style="font-size: 14.5px; line-height: 1.75; color: #6E3540; margin: 0 0 30px; text-wrap: pretty;">
-            So while I'm not calculating relativity or debating virtue, I am using analytics + AI to build the future of business — with a name that always starts a conversation.
+            So while I'm not calculating relativity or debating virtue, I am using analytics + AI to build the future of business, with a name that always starts a conversation.
           </p>
           <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center;">
             <a href="#posts" data-btn="" style="text-decoration: none; background: var(--maroon,#6B1F2E); color: #F7EEE7; padding: 14px 28px; border-radius: 999px; font-weight: 600; font-size: 15px; transition: transform .25s;">View my work →</a>
@@ -78,25 +109,25 @@
             <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--maroon,#6B1F2E); background: color-mix(in srgb, var(--gold,#C2A14D) 22%, #fff); border: 1px solid color-mix(in srgb, var(--gold,#C2A14D) 55%, transparent); padding: 10px 18px; border-radius: 999px;">Open to Summer ’27 Internships</span>
           </div>
         </div>
-      <img src="assets/headshot-cutout.png" alt="Einsteinia Socrates" style="position: absolute; height: 681px; z-index: 2; filter: drop-shadow(0 30px 40px rgba(60,12,24,0.35)); width: 472px; left: 677px; top: 64px"><div style="position: absolute; width: clamp(200px, 30vw, 300px); height: clamp(200px, 30vw, 300px); background: var(--blush,#E8A9B4); border-radius: 50%; opacity: 0.55; z-index: 1; left: 757px; top: 240px"></div></div>
+      <img src="assets/headshot-cutout.png" alt="Einsteinia Socrates" data-m-headshot="" style="position: absolute; height: 681px; z-index: 2; filter: drop-shadow(0 30px 40px rgba(60,12,24,0.35)); width: 472px; left: 677px; top: 64px"><div style="position: absolute; width: clamp(200px, 30vw, 300px); height: clamp(200px, 30vw, 300px); background: var(--blush,#E8A9B4); border-radius: 50%; opacity: 0.55; z-index: 1; left: 757px; top: 240px" data-m-blob=""></div></div>
       <!-- hero body: wordmark + cutout -->
       
     </div>
   </header>
 
   <!-- ============ UPDATES & REFLECTIONS (FEED) ============ -->
-  <section id="posts" style="background: #fff; padding: 92px 40px 100px;">
+  <section id="posts" data-m-pad="" style="background: #fff; padding: 92px 40px 100px;">
     <div style="max-width: 1100px; margin: 0 auto;">
       <div data-reveal="" style="text-align: center; margin-bottom: 48px;">
-        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #9E3B49; margin-bottom: 14px;">01 — The Feed</div>
+        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #9E3B49; margin-bottom: 14px;">01 · The Feed</div>
         <h2 style="font-family: 'Bodoni Moda', serif; font-weight: 500; font-size: clamp(34px, 5vw, 56px); color: var(--maroon,#6B1F2E); margin: 0;">Updates &amp; Reflections</h2>
-        <p style="font-size: 15px; color: #9E3B49; margin: 12px auto 0; max-width: 52ch;">Projects, awards, events &amp; the lessons in between — everything I'm building and learning, in one place.</p>
+        <p style="font-size: 15px; color: #9E3B49; margin: 12px auto 0; max-width: 52ch;">Projects, awards, events &amp; the lessons in between: everything I'm building and learning, in one place.</p>
       </div>
 
-      <div data-reveal="" style="position: relative; margin: 0 -4px; padding: 0 30px;">
-          <button onClick="{{ prevPost }}" data-post-arrow="" aria-label="Previous update" style="position: absolute; left: -6px; top: 50%; transform: translateY(-50%); z-index: 20; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: #fff; border: 1px solid color-mix(in srgb, var(--gold,#C2A14D) 50%, transparent); color: var(--maroon,#6B1F2E); font-size: 24px; line-height: 1; border-radius: 50%; cursor: pointer; box-shadow: 0 10px 26px -12px rgba(60,12,24,0.35); transition: background .25s, color .25s, transform .25s;">‹</button>
-          <button onClick="{{ nextPost }}" data-post-arrow="" aria-label="Next update" style="position: absolute; right: -6px; top: 50%; transform: translateY(-50%); z-index: 20; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: #fff; border: 1px solid color-mix(in srgb, var(--gold,#C2A14D) 50%, transparent); color: var(--maroon,#6B1F2E); font-size: 24px; line-height: 1; border-radius: 50%; cursor: pointer; box-shadow: 0 10px 26px -12px rgba(60,12,24,0.35); transition: background .25s, color .25s, transform .25s;">›</button>
-        <div data-posts-deck="" style="position: relative; height: 640px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+      <div data-reveal="" data-m-deckwrap="" style="position: relative; margin: 0 -4px; padding: 0 30px;">
+          <button onClick="{{ prevPost }}" data-post-arrow="" data-m-deck-arrow="" aria-label="Previous update" style="position: absolute; left: -6px; top: 50%; transform: translateY(-50%); z-index: 20; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: #fff; border: 1px solid color-mix(in srgb, var(--gold,#C2A14D) 50%, transparent); color: var(--maroon,#6B1F2E); font-size: 24px; line-height: 1; border-radius: 50%; cursor: pointer; box-shadow: 0 10px 26px -12px rgba(60,12,24,0.35); transition: background .25s, color .25s, transform .25s;">‹</button>
+          <button onClick="{{ nextPost }}" data-post-arrow="" data-m-deck-arrow="" aria-label="Next update" style="position: absolute; right: -6px; top: 50%; transform: translateY(-50%); z-index: 20; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: #fff; border: 1px solid color-mix(in srgb, var(--gold,#C2A14D) 50%, transparent); color: var(--maroon,#6B1F2E); font-size: 24px; line-height: 1; border-radius: 50%; cursor: pointer; box-shadow: 0 10px 26px -12px rgba(60,12,24,0.35); transition: background .25s, color .25s, transform .25s;">›</button>
+        <div data-posts-deck="" data-m-deck="" style="position: relative; height: 640px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
           <sc-for list="{{ posts }}" as="post" hint-placeholder-count="3">
             <article data-post="" style="position: absolute; top: 0; width: min(460px, 88vw); height: 620px; display: flex; flex-direction: column; cursor: default; background: #fff; border: 1px solid color-mix(in srgb, var(--gold,#C2A14D) 42%, transparent); border-radius: 18px; overflow: hidden; box-shadow: 0 26px 60px -30px rgba(60,12,24,0.45); transition: transform .45s cubic-bezier(.22,.8,.28,1), opacity .45s, filter .45s; transform: {{ post.tf }}; opacity: {{ post.op }}; filter: {{ post.fx }}; z-index: {{ post.z }}; pointer-events: {{ post.pe }};">
             <!-- meta -->
@@ -148,7 +179,7 @@
               </sc-if>
 
               <sc-if value="{{ post.hasOutro }}" hint-placeholder-val="{{ true }}">
-                <p style="font-size: 14.5px; line-height: 1.65; color: #4A2831; margin: 18px 0 0; text-wrap: pretty;">{{ post.outro }}</p>
+                <p style="font-size: 14.5px; line-height: 1.65; color: #4A2831; margin: 18px 0 0; text-wrap: pretty; white-space: pre-line;">{{ post.outro }}</p>
               </sc-if>
 
               <sc-if value="{{ post.hasChips }}" hint-placeholder-val="{{ true }}">
@@ -188,7 +219,7 @@
             </article>
           </sc-for>
         </div>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 0; margin-top: 30px; max-width: 560px; margin-left: auto; margin-right: auto;">
+        <div data-m-dots="" style="display: flex; align-items: center; justify-content: center; gap: 0; margin-top: 30px; max-width: 560px; margin-left: auto; margin-right: auto;">
           <sc-for list="{{ postDots }}" as="d" hint-placeholder-count="8">
             <div style="display: flex; align-items: center; flex: 1; min-width: 0;">
               <button onClick="{{ d.go }}" data-post-dot="" aria-label="Go to update" style="flex-shrink: 0; height: {{ d.size }}; width: {{ d.size }}; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--maroon,#6B1F2E) 30%, transparent); padding: 0; cursor: pointer; background: {{ d.bg }}; transition: height .3s, width .3s, background .3s;"></button>
@@ -223,7 +254,7 @@
     <div onClick="{{ closeResume }}" data-resume-modal="" style="position: fixed; inset: 0; z-index: 320; background: rgba(26,12,17,0.55); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); display: flex; align-items: center; justify-content: center; padding: 34px;">
       <div onClick="{{ stopModalClick }}" style="position: relative; width: min(760px, 94vw); height: min(92vh, 1180px); background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 40px 90px -30px rgba(20,4,10,0.6); display: flex; flex-direction: column;">
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; border-bottom: 1px solid #F0E3E6; flex-shrink: 0;">
-          <div style="font-family: 'Bodoni Moda', serif; font-size: 18px; color: #2A1118;">Einsteinia Socrates — Resume</div>
+          <div style="font-family: 'Bodoni Moda', serif; font-size: 18px; color: #2A1118;">Einsteinia Socrates · Resume</div>
           <div style="display: flex; align-items: center; gap: 10px;">
             <a href="{{ resumeUrl }}" download="Einsteinia_Socrates_Resume.pdf" data-resume-dl="" style="text-decoration: none; font-size: 12.5px; font-weight: 700; color: #F7EEE7; background: var(--maroon,#6B1F2E); padding: 9px 16px; border-radius: 999px; transition: background .25s;">Download PDF</a>
             <button onClick="{{ closeResume }}" aria-label="Close" style="width: 34px; height: 34px; border-radius: 50%; border: none; background: #F7EEE7; color: var(--maroon,#6B1F2E); font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
@@ -237,10 +268,10 @@
   </sc-if>
 
   <!-- ============ EXPERIENCE TIMELINE ============ -->
-  <section id="experience" style="background: #F7EEE7; padding: 100px 40px;">
+  <section id="experience" data-m-pad="" style="background: #F7EEE7; padding: 100px 40px;">
     <div style="max-width: 1000px; margin: 0 auto;">
       <div data-reveal="" style="text-align: center; margin-bottom: 60px;">
-        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #9E3B49; margin-bottom: 14px;">02 — Experience</div>
+        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #9E3B49; margin-bottom: 14px;">02 · Experience</div>
         <h2 style="font-family: 'Bodoni Moda', serif; font-weight: 500; font-size: clamp(34px, 5vw, 54px); color: var(--maroon,#6B1F2E); margin: 0;">Where I've made an impact</h2>
       </div>
       <div style="position: relative;">
@@ -256,7 +287,6 @@
               <span style="font-weight: 600; color: var(--maroon,#6B1F2E); font-size: 14.5px;">{{ e.org }}</span>
               <span style="font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9E3B49; background: color-mix(in srgb, var(--blush,#E8A9B4) 40%, #fff); padding: 3px 9px; border-radius: 999px;">{{ e.type }}</span>
             </div>
-            <p style="font-size: 14.5px; line-height: 1.6; color: #6E3540; margin: 0 0 12px; max-width: 70ch;">{{ e.desc }}</p>
             <sc-if value="{{ e.hasBullets }}" hint-placeholder-val="{{ false }}">
               <div style="display: flex; flex-direction: column; gap: 9px; margin: 0 0 14px; max-width: 74ch;">
                 <sc-for list="{{ e.bullets }}" as="b" hint-placeholder-count="3">
@@ -321,7 +351,7 @@
     <div onClick="{{ closeResume }}" data-resume-modal="" style="position: fixed; inset: 0; z-index: 320; background: rgba(26,12,17,0.55); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); display: flex; align-items: center; justify-content: center; padding: 34px;">
       <div onClick="{{ stopModalClick }}" style="position: relative; width: min(760px, 94vw); height: min(92vh, 1180px); background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 40px 90px -30px rgba(20,4,10,0.6); display: flex; flex-direction: column;">
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; border-bottom: 1px solid #F0E3E6; flex-shrink: 0;">
-          <div style="font-family: 'Bodoni Moda', serif; font-size: 18px; color: #2A1118;">Einsteinia Socrates — Resume</div>
+          <div style="font-family: 'Bodoni Moda', serif; font-size: 18px; color: #2A1118;">Einsteinia Socrates · Resume</div>
           <div style="display: flex; align-items: center; gap: 10px;">
             <a href="{{ resumeUrl }}" download="Einsteinia_Socrates_Resume.pdf" data-resume-dl="" style="text-decoration: none; font-size: 12.5px; font-weight: 700; color: #F7EEE7; background: var(--maroon,#6B1F2E); padding: 9px 16px; border-radius: 999px; transition: background .25s;">Download PDF</a>
             <button onClick="{{ closeResume }}" aria-label="Close" style="width: 34px; height: 34px; border-radius: 50%; border: none; background: #F7EEE7; color: var(--maroon,#6B1F2E); font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
@@ -343,16 +373,16 @@
   </sc-if>
 
   <!-- ============ EDUCATION ============ -->
-  <section id="education" style="background: #fff; padding: 100px 40px;">
+  <section id="education" data-m-pad="" style="background: #fff; padding: 100px 40px;">
     <div style="max-width: 1120px; margin: 0 auto;">
       <div data-reveal="" style="text-align: center; margin-bottom: 56px;">
-        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #9E3B49; margin-bottom: 14px;">03 — Education</div>
+        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #9E3B49; margin-bottom: 14px;">03 · Education</div>
         <h2 style="font-family: 'Bodoni Moda', serif; font-weight: 500; font-size: clamp(34px, 5vw, 54px); color: var(--maroon,#6B1F2E); margin: 0;">Where I've grown</h2>
       </div>
       <div style="display: flex; flex-direction: column; gap: 40px;">
         <sc-for list="{{ education }}" as="ed" hint-placeholder-count="2">
           <div data-reveal="" data-edu="" style="background: #F7EEE7; border: 1px solid color-mix(in srgb, var(--gold,#C2A14D) 50%, transparent); border-radius: 12px; overflow: hidden; transition: transform .35s, box-shadow .35s;">
-            <div style="display: grid; grid-template-columns: auto 1fr; gap: 26px; padding: 38px 42px 28px; align-items: start;">
+            <div data-m-edu-head="" style="display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 26px; padding: 38px 42px 28px; align-items: start;">
               <div style="width: 68px; height: 68px; border-radius: 15px; background: var(--maroon,#6B1F2E); color: var(--gold,#E7C66B); display: flex; align-items: center; justify-content: center; font-family: 'Bodoni Moda', serif; font-size: 30px; flex-shrink: 0;">{{ ed.monogram }}</div>
               <div>
                 <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
@@ -363,9 +393,9 @@
                 <p style="font-size: 14.5px; line-height: 1.6; color: #6E3540; margin: 10px 0 0; max-width: 72ch;">{{ ed.desc }}</p>
               </div>
             </div>
-            <div style="padding: 4px 42px 10px;">
+            <div data-m-edu-body="" style="padding: 4px 42px 10px;">
               <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #9E3B49; margin-bottom: 14px; border-top: 1px solid #F0E2E4; padding-top: 22px;">Involvements &amp; Leadership</div>
-              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 30px;">
+              <div data-m-1col="" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 30px;">
                 <sc-for list="{{ ed.involvements }}" as="iv" hint-placeholder-count="6">
                   <div onClick="{{ iv.open }}" data-inv-row="" style="display: flex; align-items: baseline; gap: 10px; padding: 11px 6px; border-bottom: 1px solid #F4E8EA; cursor: pointer; border-radius: 8px; transition: background .2s, transform .2s;">
                     <sc-if value="{{ iv.hasLogo }}" hint-placeholder-val="{{ false }}">
@@ -418,7 +448,7 @@
               </div>
             </sc-for>
           </div>
-          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 30px;">
+          <div data-m-1col="" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 30px;">
             <sc-for list="{{ openInvolvement.photos }}" as="ph" hint-placeholder-count="2">
               <image-slot id="{{ ph.id }}" shape="rounded" radius="10" src="{{ ph.src }}" placeholder="{{ ph.ph }}" style="width: 100%; aspect-ratio: 4/3;"></image-slot>
             </sc-for>
@@ -426,7 +456,7 @@
           <sc-if value="{{ openInvolvement.hasVideos }}" hint-placeholder-val="{{ false }}">
             <div style="margin-top: 30px;">
               <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #9E3B49; margin-bottom: 14px;">Videos</div>
-              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+              <div data-m-1col="" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;">
                 <sc-for list="{{ openInvolvement.videos }}" as="v" hint-placeholder-count="2">
                   <blockquote class="instagram-media" data-instgrm-permalink="{{ v.href }}" data-instgrm-version="14" style="margin: 0; width: 100%; min-width: 0; background: #FAFAFA; border: 1px solid color-mix(in srgb, var(--gold,#C2A14D) 40%, transparent); border-radius: 10px; padding: 16px;">
                     <a href="{{ v.href }}" target="_blank" rel="noopener" style="display: block; text-align: center; font-size: 13px; font-weight: 600; color: var(--maroon,#6B1F2E); text-decoration: none;">View this post on Instagram ↗</a>
@@ -441,15 +471,15 @@
   </sc-if>
 
   <!-- ============ SKILLS ============ -->
-  <section id="skills" style="background: #F7EEE7; padding: 100px 40px;">
+  <section id="skills" data-m-pad="" style="background: #F7EEE7; padding: 100px 40px;">
     <div style="max-width: 1200px; margin: 0 auto;">
       <div data-reveal="" style="text-align: center; margin-bottom: 56px;">
-        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #9E3B49; margin-bottom: 14px;">04 — Skills &amp; Expertise</div>
+        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #9E3B49; margin-bottom: 14px;">04 · Skills &amp; Expertise</div>
         <h2 style="font-family: 'Bodoni Moda', serif; font-weight: 500; font-size: clamp(34px, 5vw, 54px); color: var(--maroon,#6B1F2E); margin: 0;">My toolkit</h2>
       </div>
 
       <!-- donut chart + legend -->
-      <div data-reveal="" style="display: grid; grid-template-columns: 0.62fr 1fr; gap: 54px; align-items: center; margin-bottom: 52px;">
+      <div data-reveal="" data-m-1col="" style="display: grid; grid-template-columns: 0.62fr 1fr; gap: 54px; align-items: center; margin-bottom: 52px;">
         <div style="position: relative; display: flex; justify-content: center;">
           <svg width="240" height="240" viewBox="0 0 240 240" style="transform: rotate(-90deg);">
             <circle cx="120" cy="120" r="94" fill="none" stroke="color-mix(in srgb, var(--blush,#E8A9B4) 22%, #fff)" stroke-width="30"></circle>
@@ -474,7 +504,7 @@
       </div>
 
       <!-- category chip cards -->
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-bottom: 56px;">
+      <div data-m-1col="" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-bottom: 56px;">
         <sc-for list="{{ skillCategories }}" as="c" hint-placeholder-count="4">
           <div data-reveal="" style="background: #fff; border: 1px solid color-mix(in srgb, var(--gold,#C2A14D) 40%, transparent); border-top: 4px solid {{ c.color }}; border-radius: 10px; padding: 26px 26px 28px;">
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
@@ -525,14 +555,14 @@
   </sc-if>
 
   <!-- ============ CONTACT ============ -->
-  <footer id="contact" style="background: var(--maroon,#6B1F2E); color: #F7EEE7; padding: 100px 40px 50px;">
+  <footer id="contact" data-m-pad="" style="background: var(--maroon,#6B1F2E); color: #F7EEE7; padding: 100px 40px 50px;">
     <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
-      <div data-reveal="" style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold,#E7C66B); margin-bottom: 20px;">06 — Get in touch</div>
+      <div data-reveal="" style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold,#E7C66B); margin-bottom: 20px;">06 · Get in touch</div>
       <h2 data-reveal="" style="font-family: 'Bodoni Moda', serif; font-weight: 500; font-size: clamp(44px, 8vw, 100px); line-height: 0.98; margin: 0 0 22px; color: #F7EEE7;">Let's <span style="font-style: italic; color: var(--gold,#E7C66B);">connect.</span></h2>
       <p data-reveal="" style="font-size: 17px; line-height: 1.6; color: #EAD3D7; max-width: 56ch; margin: 0 auto 48px;">
         Always open to new opportunities, consulting projects, or just connecting with fellow data enthusiasts. Let's chat!
       </p>
-      <div data-reveal="" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 760px; margin: 0 auto 56px;">
+      <div data-reveal="" data-m-1col="" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; max-width: 760px; margin: 0 auto 56px;">
         <a href="mailto:einsteinias@gmail.com" data-contact="" style="text-decoration: none; background: color-mix(in srgb, #fff 7%, var(--maroon,#6B1F2E)); border: 1px solid color-mix(in srgb, var(--gold,#C2A14D) 50%, transparent); border-radius: 12px; padding: 28px 18px; transition: transform .3s, border-color .3s;">
           <div style="font-size: 26px; margin-bottom: 12px;">✉</div>
           <div style="font-weight: 700; color: #F7EEE7; margin-bottom: 4px;">Email</div>
@@ -550,7 +580,7 @@
         </button>
       </div>
       <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 70px; padding-top: 26px; border-top: 1px solid color-mix(in srgb, var(--gold,#C2A14D) 35%, transparent); font-size: 12px; letter-spacing: 0.06em; color: #E3B7BE;">
-        <span>© 2026 Einsteinia Socrates — Business Analytics, Purdue ’28</span>
+        <span>© 2026 Einsteinia Socrates · Business Analytics, Purdue ’28</span>
       </div>
     </div>
   </footer>
@@ -800,13 +830,13 @@ class Component extends DCLogic {
     const camCounter = (camIdx + 1) + ' / ' + tv.length;
 
     const experience = [
-      { title: 'Peer Consultant and Teaching Assistant', org: 'Business Career Services || Purdue University Daniels School of Business', type: 'Advising', period: 'Aug 2025 – Present', desc: 'Provide one-on-one career support to undergraduate business students by reviewing resumes, optimizing LinkedIn profiles, and conducting mock interviews. Assist in teaching and facilitating a career readiness course as a Teaching Assistant, reinforcing key professional development concepts and offering individualized guidance. Collaborate with career advisors to ensure consistency in advising practices and stay informed on industry trends to deliver relevant, actionable feedback.', highlights: ['Resume & LinkedIn reviews', 'Mock interviews', 'Career readiness course TA'] },
+      { title: 'Peer Consultant and Teaching Assistant', org: 'Business Career Services || Purdue University Daniels School of Business', type: 'Advising', period: 'Aug 2025 – Present', bullets: ['Provide one-on-one career support to undergraduate business students by reviewing resumes, optimizing LinkedIn profiles, and conducting mock interviews.', 'Assist in teaching and facilitating a career readiness course as a Teaching Assistant, reinforcing key professional development concepts and offering individualized guidance.', 'Collaborate with career advisors to ensure consistency in advising practices and stay informed on industry trends to deliver relevant, actionable feedback.'], highlights: ['Resume & LinkedIn reviews', 'Mock interviews', 'Career readiness course TA'] },
       { title: 'Corporate Digital Analytics Intern', org: 'Caterpillar Inc.', type: 'Industry', period: 'May 2026 – Aug 2026', bullets: ['Produced 8 system navigational micro-training videos for digital dealer sales enablement platform, equipping dealers to effectively position, demonstrate, and sell Caterpillar parts and solutions across 10+ product categories.', 'Developed a dashboard visualizing inspection trends by region, dealer, and product family to diagnose a 6% decline in inspections, enabling targeted outreach to improve completion rates by end of 2026.', 'Automated competitor monitoring for the Customer Wear Management System using an AI agent that compiles daily intelligence reports saving ~10 analyst hours weekly and enabling near-real-time market awareness.'], highlights: ['Digital Aftermarket', 'AI Agent', 'Dashboarding'] },
-      { title: 'Data Science Intern', org: 'BTE Global', type: 'Industry', period: 'May 2025 – Aug 2025', desc: 'Designed and deployed 10+ CRM automation workflows for SMB clients using Zapier, GoHighLevel, n8n, and VAPI — end-to-end automations for law firms and HVAC companies.', highlights: ['10+ automations', '40–60% process reduction', '5–10+ hrs saved weekly'], hasQuote: true, quote: 'Einsey left an impression well beyond what I typically see from someone at this stage in her career. What stood out most was not just her technical ability, but her instinct for how to apply it — experienced developers would approach a problem the long way, and she\u2019d say \u201clet\u2019s just use the tool\u201d and have a working solution running while the conversation was still going. She didn\u2019t just learn AI workflow automation, n8n, and Zapier — she taught them, among senior developers. Sharp, resourceful, and a natural collaborator. Any team would be lucky to have her.', quoteName: 'Matthew von Trapp', quoteRole: 'Fractional CTO, BTE Global · Her mentor' },
-      { title: 'Data Analyst Intern', org: 'Business Career Services, Purdue', type: 'Analytics', period: 'Oct 2024 – May 2025', desc: 'Analyzed career-fair and event data across 7 industries and 11 majors. Cleaned and analyzed 1,000+ rows of senior placement data and built Tableau dashboards for BCS leadership.', highlights: ['1,000+ rows', 'Tableau dashboards', '7 industries'] },
-      { title: 'Junior Program Developer & Co-PM', org: 'APS Data Technologies', type: 'Development', period: 'Jun 2023 – Aug 2023', desc: 'Led a team of 5 to build a mobile app with OOP, Machine Learning, Firebase, and Flutter — rewarding users with digital coins redeemable at local businesses.', highlights: ['23% resident adoption', 'ML & Firebase', 'Flutter app'] },
-      { title: 'Intern, Center of Innovation and Inquiry', org: 'Illinois Mathematics and Science Academy', type: 'Internship', period: 'Sep 2022 – May 2023', desc: 'Created an immersive online platform centered around the center\u2019s business model, empowering students to integrate their own ideas into the framework. Produced an introductory video for "PowerPitch," a business competition where students pitch entrepreneurial concepts, and hand-sketched business icons and phrases to bring the IN2 whiteboard to life. Developed a user-friendly website organizing IMSA articles under key topics like Entrepreneurship, Design Thinking, Innovation, and Economics.', highlights: ['Video Editing', 'Graphic Design', 'Web Development'], hasLinks: true, links: [ { href: 'assets/imsa-cii-infogram.png', label: 'View Infogram' } ], hasPhoto: true, photoId: 'exp-imsa-cii-photo', photo: 'assets/imsa-cii-photo.png' },
-      { title: 'Project Intern', org: 'WeSolv', type: 'Internship', period: 'Jun 2022 – Aug 2022', desc: 'Conducted research and data analysis on the impact of WeSolv Case Challenges on candidates\u2019 career trajectories — collecting job titles, companies, and functions before, during, and after their MBA to track career changes. Analyzed whether participation in Case Challenges influenced candidates\u2019 transitions to new roles, finding that a majority of participants experienced at least one career pivot during their MBA studies.', highlights: ['Data Analysis', 'Communication', 'Graphic Design'], hasLinks: true, links: [ { href: 'assets/wesolv-infogram.png', label: 'View Infogram' }, { href: 'assets/wesolv-report.pdf', label: 'View Full Report' } ] },
+      { title: 'Data Science Intern', org: 'BTE Global', type: 'Industry', period: 'May 2025 – Aug 2025', bullets: ['Designed and deployed 10+ CRM automation workflows for SMB clients using Zapier, GoHighLevel, n8n, and VAPI, end-to-end automations for law firms and HVAC companies.'], highlights: ['10+ automations', '40–60% process reduction', '5–10+ hrs saved weekly'], hasQuote: true, quote: 'Einsey left an impression well beyond what I typically see from someone at this stage in her career. What stood out most was not just her technical ability, but her instinct for how to apply it, experienced developers would approach a problem the long way, and she\u2019d say \u201clet\u2019s just use the tool\u201d and have a working solution running while the conversation was still going. She didn\u2019t just learn AI workflow automation, n8n, and Zapier, she taught them, among senior developers. Sharp, resourceful, and a natural collaborator. Any team would be lucky to have her.', quoteName: 'Matthew von Trapp', quoteRole: 'Fractional CTO, BTE Global · Her mentor' },
+      { title: 'Data Analyst Intern', org: 'Business Career Services, Purdue', type: 'Analytics', period: 'Oct 2024 – May 2025', bullets: ['Analyzed career-fair and event data across 7 industries and 11 majors.', 'Cleaned and analyzed 1,000+ rows of senior placement data and built Tableau dashboards for BCS leadership.'], highlights: ['1,000+ rows', 'Tableau dashboards', '7 industries'] },
+      { title: 'Junior Program Developer & Co-PM', org: 'APS Data Technologies', type: 'Development', period: 'Jun 2023 – Aug 2023', bullets: ['Led a team of 5 to build a mobile app with OOP, Machine Learning, Firebase, and Flutter, rewarding users with digital coins redeemable at local businesses.'], highlights: ['23% resident adoption', 'ML & Firebase', 'Flutter app'] },
+      { title: 'Intern, Center of Innovation and Inquiry', org: 'Illinois Mathematics and Science Academy', type: 'Internship', period: 'Sep 2022 – May 2023', bullets: ['Created an immersive online platform centered around the center\u2019s business model, empowering students to integrate their own ideas into the framework.', 'Produced an introductory video for "PowerPitch," a business competition where students pitch entrepreneurial concepts, and hand-sketched business icons and phrases to bring the IN2 whiteboard to life.', 'Developed a user-friendly website organizing IMSA articles under key topics like Entrepreneurship, Design Thinking, Innovation, and Economics.'], highlights: ['Video Editing', 'Graphic Design', 'Web Development'], hasLinks: true, links: [ { href: 'assets/imsa-cii-infogram.png', label: 'View Infogram' } ], hasPhoto: true, photoId: 'exp-imsa-cii-photo', photo: 'assets/imsa-cii-photo.png' },
+      { title: 'Project Intern', org: 'WeSolv', type: 'Internship', period: 'Jun 2022 – Aug 2022', bullets: ['Conducted research and data analysis on the impact of WeSolv Case Challenges on candidates\u2019 career trajectories, collecting job titles, companies, and functions before, during, and after their MBA to track career changes.', 'Analyzed whether participation in Case Challenges influenced candidates\u2019 transitions to new roles, finding that a majority of participants experienced at least one career pivot during their MBA studies.'], highlights: ['Data Analysis', 'Communication', 'Graphic Design'], hasLinks: true, links: [ { href: 'assets/wesolv-infogram.png', label: 'View Infogram' }, { href: 'assets/wesolv-report.pdf', label: 'View Full Report' } ] },
     ].map((e, ei) => ({ ...e, desc: e.desc || '', hasBullets: !!(e.bullets && e.bullets.length), bullets: e.bullets || [], openQuote: () => this.openQuoteModal(ei), openPhoto: () => this.openPhotoModal(ei) }));
 
     const skillCategories = [
@@ -824,11 +854,27 @@ class Component extends DCLogic {
 
     const rawPosts = [
       {
+        date: 'October 2026', category: 'Award',
+        title: '1st Place: Daniels School of Business Undergraduate Research Symposium',
+        sandwich: true,
+        intro: 'Excited to share that I was awarded 1st Place in the Purdue University Daniels School of Business Undergraduate Research Symposium at the 2026 Cornerstone for Business Conference!',
+        chips: ['1st Place', '$750 Award', 'AI vs. Human Customer Service', 'Cornerstone for Business 2026'],
+        outro: 'Won 1st place and a $750 award at the DSB Undergraduate Research Symposium. Developed and presented research examining when customers prefer AI versus human customer service, with a focus on how task complexity and emotional intensity shape that preference. The project explored how businesses could use these factors to better decide which customer interactions should be automated and which may benefit from human support.\n\nI\u2019m grateful for the opportunity to present my work and learn from faculty, alumni, and business leaders throughout the conference.\n\nA special thank you to my faculty mentor, Professor Jorge A., for his guidance and support throughout the process, and to Professor Davi Moreira for coordinating the symposium. I\u2019m also thankful to Andrea Langrish, M.Ed., Tim Lemper, and Kelly Blanchard for helping make the conference such a meaningful experience.\n\nVery grateful for this recognition and excited to continue exploring research, innovation, and the role of AI in business.',
+        images: [
+          { id: 'post-symp-1', ph: 'Receiving the 1st place award', src: 'assets/symposium-check.png' },
+          { id: 'post-symp-2', ph: 'Presenting at Cornerstone for Business', src: 'assets/symposium-podium.png' },
+          { id: 'post-symp-3', ph: 'With Professor Jorge A.', src: 'assets/symposium-check-mentor.png' },
+          { id: 'post-symp-4', ph: 'With the research poster', src: 'assets/symposium-poster-stand.png' },
+          { id: 'post-symp-5', ph: 'With the symposium organizers', src: 'assets/symposium-check-trio.png' },
+          { id: 'post-symp-6', ph: 'Research poster', src: 'assets/symposium-poster.png' },
+        ],
+      },
+      {
         date: 'August 2026', category: 'Experience',
         title: 'Wrapping Up My Summer at Caterpillar Inc.',
         sandwich: true,
         intro: 'Wrapping up my summer as a Corporate Commercial Intern at Caterpillar Inc. I developed a CWMS Competitor Intelligence Agent, earned my Copilot ACE Wings, toured Caterpillar facilities, and learned from teams across the business.',
-        chips: ['CWMS Competitor Intelligence Agent', 'Copilot ACE Wings', 'GRID Hackathon \u2014 1st Place'],
+        chips: ['CWMS Competitor Intelligence Agent', 'Copilot ACE Wings', 'GRID Hackathon 1st Place'],
         outro: 'A highlight was the GRID International Hackathon, where my team won 1st place amongst 100+ participants.',
         images: [
           { id: 'post-cat-1', ph: 'At a Caterpillar facility', src: 'assets/cat-excavator.png' },
@@ -850,9 +896,11 @@ class Component extends DCLogic {
       },
       {
         date: 'September 2024', category: 'Award',
-        title: '1st Place — Purdue First Year Pitch',
-        intro: 'Won 1st place and $1,000 at the Purdue First Year Pitch, competing against 100+ participants — developing and delivering a winning entrepreneurial pitch under pressure.',
+        title: '1st Place: Purdue First Year Pitch',
+        sandwich: true,
+        intro: 'I\u2019m absolutely thrilled to announce that Gracelynn Hyman and I took home first place and $1,000 at the Purdue First Year Pitch Competition, competing alongside over 100 talented participants!',
         chips: ['1st Place', '$1,000 Prize', '100+ Participants'],
+        outro: 'We had the opportunity to pitch our case study and refine our entrepreneurial skills. The entire process from preparation to execution was challenging, but it pushed us to grow. I couldn\u2019t have asked for a better partner, and I can\u2019t wait to collaborate with Gracelynn again in the future!',
         images: [
           { id: 'post-pitch-1', ph: 'Winning the pitch', src: 'assets/check-presentation.png' },
           { id: 'post-pitch-2', ph: '1st place trophies', src: 'assets/pitch-1st-place-duo.png' },
@@ -864,21 +912,23 @@ class Component extends DCLogic {
       },
       {
         date: 'June 2026', category: 'Award',
-        title: '1st Place — GRID International Hackathon',
+        title: '1st Place: GRID International Hackathon',
         sandwich: true,
         intro: 'The inaugural GRID (Global Repository for Industry Data) Hackathon brought together teams from across Caterpillar to explore one question: what\u2019s possible when high-quality industry data is put in the hands of top analytics talent? Over 100 participants from North America, EAME, and APD delivered 19 projects in a 24-hour period.',
         chips: ['1st of 19 Projects', '100+ Participants', '24-Hour Build', 'Team Coderpillars'],
-        outro: 'Scoring was tight, but Team Coderpillars came out on top \u2014 we built a custom dashboard generating ranked \u201cnext moves\u201d for each segment and region, plus pipeline generation, fleet intelligence, and market trajectory components.',
+        outro: 'Scoring was tight, but Team Coderpillars came out on top. We built a custom dashboard generating ranked \u201cnext moves\u201d for each segment and region, plus pipeline generation, fleet intelligence, and market trajectory components.',
         images: [
           { id: 'post-grid-1', ph: 'With the Coderpillars team', src: 'assets/grid-hackathon-team.png' },
         ],
       },
       {
         date: 'November 2024', category: 'Award',
-        title: '3rd Place — Crowe Case Competition',
-        intro: 'Earned 3rd place at the Crowe Case Competition with a strategic plan for “CroweMind” centered on AI integration, data security, and client trust — recognized for insight and feasibility.',
+        title: '3rd Place: Crowe Case Competition',
+        sandwich: true,
+        intro: 'Earned 3rd place at the Crowe Case Competition, organized by TEDxPurdueU, Ascend Purdue, and Crowe.',
         chips: ['3rd Place', 'AI Integration', 'Data Security', 'Client Trust'],
-        images: [{ id: 'post-crowe-1', ph: 'Award ceremony', src: 'assets/award-ceremony-1.png' }],
+        outro: 'Our team proposed \u201cCroweMind,\u201d a strategic plan for implementing AI and machine learning in business and consulting, built around data security and client trust. Judges recognized the plan for its insight and feasibility.',
+        images: [{ id: 'post-crowe-2', ph: 'Ascend x Crowe 3rd place team', src: 'assets/crowe-case-comp-3rd-place.png' }],
       },
       {
         date: '2025', category: 'Event',
@@ -886,7 +936,7 @@ class Component extends DCLogic {
         sandwich: true,
         intro: 'Represented Purdue University at the 10th Annual McCombs National Women’s Case Competition, sponsored by Apple and hosted by The University of Texas at Austin. As one of 27 schools competing, I worked with my team to develop an innovative supply chain solution for optimizing AirPods 4 production.',
         chips: ['Apple', 'UT Austin McCombs', '27 Schools', 'Supply Chain Strategy'],
-        outro: 'Beyond the competition, I got to visit Apple’s campus and connect with professionals in supply chain and operations — an incredible learning experience in problem-solving, analytical thinking, and innovation.',
+        outro: 'Beyond the competition, I got to visit Apple’s campus and connect with professionals in supply chain and operations, an incredible learning experience in problem-solving, analytical thinking, and innovation.',
         images: [
           { id: 'post-mccombs-1', ph: 'Purdue team at Texas McCombs', src: 'assets/mccombs-1.png' },
           { id: 'post-mccombs-2', ph: 'Team at the McCombs case competition', src: 'assets/mccombs-2.png' },
@@ -902,7 +952,7 @@ class Component extends DCLogic {
         date: '2025', category: 'Event',
         title: 'Wisconsin School of Business Case Competition',
         sandwich: true,
-        intro: 'Proud to have competed in the Consulting Case Competition at the Wisconsin School of Business — an experience filled with sharp thinking, teamwork, and fast-paced problem-solving alongside a talented team of Purdue peers.',
+        intro: 'Proud to have competed in the Consulting Case Competition at the Wisconsin School of Business, an experience filled with sharp thinking, teamwork, and fast-paced problem-solving alongside a talented team of Purdue peers.',
         chips: ['Consulting', 'Case Competition', 'Wisconsin School of Business'],
         outro: 'Grateful for the mentorship from professionals at Deloitte, EY, Bain & Company, Accenture, and Grant Thornton throughout the event.',
         images: [
@@ -914,11 +964,11 @@ class Component extends DCLogic {
       },
       {
         date: 'Summer 2023', category: 'Event',
-        title: 'Economics for Leaders Summer Program — University of Michigan',
+        title: 'Economics for Leaders Summer Program: University of Michigan',
         sandwich: true,
         intro: 'Selected as 1 of 44 students nationwide for the Economics for Leaders (EFL) program at the University of Michigan. Learned how to integrate economics into decision-making and leadership, and attended interactive workshops building skills in resilience, adaptability, and empowerment.',
         chips: ['1 of 44 Selected', 'University of Michigan', 'Leadership'],
-        outro: 'EFL prepares promising students to apply economic analysis to real public policy challenges — introducing economic concepts, reasoning, and leadership theory for a world of increasingly complex policy decisions. The program boasts a 90% recommendation rate among 2025 participants and is highly competitive, with roughly two applicants for every spot.',
+        outro: 'EFL prepares promising students to apply economic analysis to real public policy challenges, introducing economic concepts, reasoning, and leadership theory for a world of increasingly complex policy decisions. The program boasts a 90% recommendation rate among 2025 participants and is highly competitive, with roughly two applicants for every spot.',
         images: [
           { id: 'post-efl-1', ph: 'EFL cohort at the University of Michigan', src: 'assets/efl-group.png' },
         ],
@@ -926,8 +976,10 @@ class Component extends DCLogic {
       {
         date: 'Summer 2023', category: 'Event',
         title: 'GirlCon Conference',
-        intro: 'Attended GirlCon, an annual student-led international conference designed to bridge the gender gap in STEM, business, and entrepreneurship — connecting students with hundreds of industry professionals and keynote speakers through interactive breakout sessions and networking opportunities.',
+        sandwich: true,
+        intro: 'Attended GirlCon, an annual student-led international conference designed to bridge the gender gap in STEM, business, and entrepreneurship.',
         chips: ['STEM', 'Business & Entrepreneurship', 'Networking'],
+        outro: 'The conference connected students with hundreds of industry professionals and keynote speakers through interactive breakout sessions and networking opportunities.',
         images: [
           { id: 'post-girlcon-1', ph: 'GirlCon 2023 cohort', src: 'assets/girlcon-group.png' },
           { id: 'post-girlcon-2', ph: 'With friends at GirlCon 2023', src: 'assets/girlcon-friends.png' },
@@ -935,9 +987,9 @@ class Component extends DCLogic {
       },
       {
         date: '2020 – 2023', category: 'Milestone',
-        title: 'Four Years on the Court — Tennis',
+        title: 'Four Years on the Court: Tennis',
         sandwich: true,
-        intro: 'A four-year varsity tennis career spanning two schools and two positions — from top singles starter to top doubles starter, capped by Female Athlete of the Year.',
+        intro: 'A four-year varsity tennis career spanning two schools and two positions, from top singles starter to top doubles starter, capped by Female Athlete of the Year.',
         takeaways: [
           { n: '1', lead: 'Female Athlete of the Year (May 2022).', detail: 'Recognized for years of commitment to athletics, leadership, and sportsmanship.' },
           { n: '2', lead: 'Number 1 Varsity Doubles Starter (Aug 2022 – Nov 2023).', detail: 'Varsity Girls Tennis, Illinois Mathematics and Science Academy.' },
@@ -957,29 +1009,29 @@ class Component extends DCLogic {
       },
       {
         date: 'November 2025', category: 'Award',
-        title: '3rd Place — Kelley-Daniels Case Competition',
-        intro: 'Placed 3rd of 8 teams at the Kelley-Daniels Case Competition. Our team delivered a three-pronged strategy spanning operations, platform innovation, and community marketing — complete with phased implementation timelines.',
+        title: '3rd Place: Kelley-Daniels Case Competition',
+        intro: 'Placed 3rd of 8 teams at the Kelley-Daniels Case Competition. Our team delivered a three-pronged strategy spanning operations, platform innovation, and community marketing, complete with phased implementation timelines.',
         chips: ['3rd of 8 Teams', 'Operations', 'Platform Innovation', 'Community Marketing'],
-        images: [{ id: 'post-kelley-1', ph: 'Case competition', src: 'assets/case-competition.png' }],
+        images: [{ id: 'post-kelley-2', ph: 'Kelley-Daniels team with the IU mascot', src: 'assets/kelley-daniels-case-comp-team.png' }],
       },
       {
         date: 'Spring 2026', category: 'Event',
         title: 'Interviewing Candice Xie, CEO & Co-Founder of Veo',
         sandwich: true,
-        intro: 'I had the opportunity to interview Candice Xie, CEO & Co-Founder of Veo, as 1 of 3 students selected to represent ENTR 20020: Introduction to Entrepreneurship & Innovation at Purdue. Hearing from a founder who started building Veo as a Purdue student — and grew it into such an impactful company — was unforgettable. Here are my 6 biggest takeaways:',
+        intro: 'I had the opportunity to interview Candice Xie, CEO & Co-Founder of Veo, as 1 of 3 students selected to represent ENTR 20020: Introduction to Entrepreneurship & Innovation at Purdue. Hearing from a founder who started building Veo as a Purdue student, and grew it into such an impactful company, was unforgettable. Here are my 6 biggest takeaways:',
         takeaways: [
-          { n: '1', lead: 'Growth is about competing with the person you were yesterday.', detail: 'Candice shared how tennis shaped her mindset — success comes from consistently improving, not just winning or losing.' },
+          { n: '1', lead: 'Growth is about competing with the person you were yesterday.', detail: 'Candice shared how tennis shaped her mindset: success comes from consistently improving, not just winning or losing.' },
           { n: '2', lead: 'College is the best time to explore, fail, and try new things.', detail: 'She emphasized taking risks, learning from failure, and growing while the stakes are low.' },
           { n: '3', lead: 'Sales is one of the most important skills to learn.', detail: 'Knowing how to sell yourself, your ideas, and your product is foundational to everything.' },
           { n: '4', lead: 'Taking risks and trusting your gut can be essential.', detail: 'Moving Veo’s headquarters from Chicago to Santa Monica was a major risk that brought the team closer to its customers and product.' },
-          { n: '5', lead: 'Listening to customers can shape your product.', detail: 'Veo’s early product evolved by closely watching customer behavior and needs — which ultimately led them to pivot.' },
+          { n: '5', lead: 'Listening to customers can shape your product.', detail: 'Veo’s early product evolved by closely watching customer behavior and needs, which ultimately led them to pivot.' },
           { n: '6', lead: 'Big ideas continue to evolve.', detail: 'Veo keeps innovating, including launching the Veo Apollo, a shared-use dual-passenger e-bike.' },
         ],
         outro: 'So grateful to have been part of this conversation and to learn from such an inspiring founder.',
         images: [
-          { id: 'post-veo-1', ph: 'Interview with Candice Xie', src: 'assets/veo-1.png' },
-          { id: 'post-veo-2', ph: 'With the ENTR 20020 team', src: 'assets/veo-2.png' },
-          { id: 'post-veo-3', ph: 'Event moment', src: 'assets/veo-3.png' },
+          { id: 'post-veo-1', ph: 'Interview with Candice Xie', src: '' },
+          { id: 'post-veo-2', ph: 'With the ENTR 20020 team', src: '' },
+          { id: 'post-veo-3', ph: 'Event moment', src: '' },
         ],
       },
     ];
@@ -1070,7 +1122,7 @@ class Component extends DCLogic {
       },
       {
         monogram: 'I', school: 'Illinois Mathematics & Science Academy', period: '2021 – 2024',
-        degree: 'IMSA \u2014 Advanced STEM Diploma',
+        degree: 'IMSA: Advanced STEM Diploma',
         desc: 'Selective, residential STEM school ranked #1 in Illinois and #8 nationally.',
         involvements: [
           { org: 'Class Club', role: 'President', key: 'classclub', hasLogo: false, noLogo: true, open: () => this.openInvolvementModal('classclub') },
@@ -1086,11 +1138,11 @@ class Component extends DCLogic {
     const involvementDetails = {
       purduethink: {
         displayOrg: 'PurdueTHINK Consulting',
-        subtitle: 'Selected for PurdueTHINK — 5.3% acceptance rate',
+        subtitle: 'Selected for PurdueTHINK: 5.3% acceptance rate',
         roles: [
           { title: 'Director of Marketing', period: 'Jan 2026 – Present', desc: 'Lead chapter-wide marketing strategy across social and branding, driving a 25–35% lift in engagement. Plan content calendars (3–5×/week) and designed a standardized chapter slides template.', chips: ['Marketing Strategy', 'Content Planning', 'Branding', 'Team Leadership'] },
           { title: 'Project Manager', period: 'Aug 2025 – Dec 2025', desc: 'Managed a 5-member consulting team delivering recruitment, attendance, and event strategy for the Purdue Banking & Markets Club, with 100% on-time delivery across 9+ events.', chips: ['Project Management', 'Team Leadership', 'Cross-functional Coordination'] },
-          { title: 'Strategy Consultant', period: 'Jan 2025 – May 2025', desc: 'Led a semester engagement with Purdue Student Government — designed a Branding Toolkit and revamped Instagram strategy, driving a 34.6% engagement lift.', chips: ['Brand Strategy', 'Client Management', 'Social Strategy', 'Consulting'] },
+          { title: 'Strategy Consultant', period: 'Jan 2025 – May 2025', desc: 'Led a semester engagement with Purdue Student Government, designing a Branding Toolkit and revamping Instagram strategy, driving a 34.6% engagement lift.', chips: ['Brand Strategy', 'Client Management', 'Social Strategy', 'Consulting'] },
         ],
         photos: [
           { id: 'inv-purduethink-1', ph: 'Drop a PurdueTHINK photo', src: 'assets/purduethink-1.png' },
@@ -1101,7 +1153,7 @@ class Component extends DCLogic {
       },
       rem: {
         displayOrg: 'REM and Company',
-        subtitle: 'Rem on Campus — inaugural semester leadership team',
+        subtitle: 'Rem on Campus: inaugural semester leadership team',
         roles: [
           { title: 'Vice President of Membership', period: 'Aug 2025 – Present', desc: 'Recruited and onboarded 30+ consultants across 5 project teams in the club\u2019s inaugural semester, building structured onboarding, mentorship, and membership data systems.', chips: ['Recruiting', 'Onboarding Systems', 'Membership Strategy', 'Leadership'] },
           { title: 'What Rem & Co does', period: '', desc: 'Rem and Company is a global pro bono consulting firm that pairs top university talent with small businesses and nonprofits. At Purdue, they operate as Rem on Campus, an immersive, student-led consulting program. For the community: student teams run free 8-week accelerator programs (like \u201cSmall Biz Big Dreams\u201d) analyzing marketing, UX, and business strategy for local businesses. For students: real client-facing experience in data-driven problem solving, plus co-hosting major campus events like the Strategy Summit Case Competition.', chips: ['Consulting', 'Problem Solving', 'Client-Facing Communication'] },
@@ -1117,7 +1169,7 @@ class Component extends DCLogic {
       bwc: {
         displayOrg: 'Brock-Wilson Center',
         subtitle: 'Ambassador',
-        roles: [ { title: 'Ambassador', period: '', desc: 'The Brock-Wilson Center for Women in Business, in the Daniels School of Business at Purdue, empowers women to become confident leaders in the workplace. Through undergraduate and graduate courses, a speaker series, a learning community, and more, the Center prepares women and men to lead and excel in both a diverse workforce and a changing social climate — supporting women from pre-college throughout their careers. Individuals of all races, genders, and backgrounds are welcome at the Center\u2019s events.', chips: ['Leadership Development', 'Community Building', 'Public Speaking', 'Mentorship'] } ],
+        roles: [ { title: 'Ambassador', period: '', desc: 'The Brock-Wilson Center for Women in Business, in the Daniels School of Business at Purdue, empowers women to become confident leaders in the workplace. Through undergraduate and graduate courses, a speaker series, a learning community, and more, the Center prepares women and men to lead and excel in both a diverse workforce and a changing social climate, supporting women from pre-college throughout their careers. Individuals of all races, genders, and backgrounds are welcome at the Center\u2019s events.', chips: ['Leadership Development', 'Community Building', 'Public Speaking', 'Mentorship'] } ],
         photos: [],
       },
       follett: {
@@ -1139,37 +1191,37 @@ class Component extends DCLogic {
       kahaani: {
         displayOrg: 'Purdue Kahaani',
         subtitle: 'Bollywood Fusion Dance Team',
-        roles: [ { title: 'Dancer', period: '', desc: 'Purdue Kahaani is a competitive co-ed Bollywood fusion dance team dedicated to growing and sharing our passion for dance, performing locally and competing nationally through the DDN circuit. We train across styles including Bollywood, Bhangra, Classical, Contemporary, Hip Hop, and South/Kuthu \u2014 bringing diverse cultures together and giving Purdue students the chance to build memories, gain experience, learn new styles of dance, and understand hard work and commitment.', chips: ['Discipline', 'Teamwork', 'Time Management', 'Cultural Collaboration'] } ],
+        roles: [ { title: 'Dancer', period: '', desc: 'Purdue Kahaani is a competitive co-ed Bollywood fusion dance team dedicated to growing and sharing our passion for dance, performing locally and competing nationally through the DDN circuit. We train across styles including Bollywood, Bhangra, Classical, Contemporary, Hip Hop, and South/Kuthu, bringing diverse cultures together and giving Purdue students the chance to build memories, gain experience, learn new styles of dance, and understand hard work and commitment.', chips: ['Discipline', 'Teamwork', 'Time Management', 'Cultural Collaboration'] } ],
         photos: [ { id: 'inv-kahaani-1', ph: 'Drop a Kahaani photo', src: 'assets/kahaani-1.jpg' }, { id: 'inv-kahaani-2', ph: 'Drop a Kahaani photo', src: 'assets/kahaani-2.jpeg' }, { id: 'inv-kahaani-3', ph: 'Drop a Kahaani photo', src: 'assets/kahaani-3.jpg' } ],
       },
       classclub: {
         displayOrg: 'Class Club',
         subtitle: 'President',
-        roles: [ { title: 'President', period: '', desc: 'Led a team of 5 organizing fundraising events to raise money for senior prom — including a volleyball tournament, DoubleGood popcorn fundraiser, merch fundraiser, and food carts — and fundraised with local restaurants. Communicated with administration to approve ideas and reserve space, budgeted and raised over $75,000 for senior prom, and organized senior week events including the Six Flags trip and senior sunrise, fostering class unity along the way.', chips: ['Leadership', 'Fundraising', 'Budgeting', 'Event Planning', 'Marketing', 'Stakeholder Communication', 'Networking'] } ],
+        roles: [ { title: 'President', period: '', desc: 'Led a team of 5 organizing fundraising events to raise money for senior prom, including a volleyball tournament, DoubleGood popcorn fundraiser, merch fundraiser, and food carts, and fundraised with local restaurants. Communicated with administration to approve ideas and reserve space, budgeted and raised over $75,000 for senior prom, and organized senior week events including the Six Flags trip and senior sunrise, fostering class unity along the way.', chips: ['Leadership', 'Fundraising', 'Budgeting', 'Event Planning', 'Marketing', 'Stakeholder Communication', 'Networking'] } ],
         photos: [ { id: 'inv-classclub-1', ph: 'Drop a Class Club photo', src: 'assets/classclub-1.png' }, { id: 'inv-classclub-2', ph: 'Drop a Class Club photo', src: 'assets/classclub-2.jpeg' } ],
       },
       heliotrope: {
         displayOrg: 'Heliotrope',
         subtitle: 'Logistics Director',
-        roles: [ { title: 'Logistics Director', period: '', desc: 'Organized open studio sessions such as a Bob Ross painting workshop and community murals on campus, built materials lists to purchase supplies, contacted facilities to reserve spaces, and managed event finances using spreadsheets. Heliotrope is IMSA\u2019s literary and arts magazine, tying together the artistic talents of students and staff — a space where the IMSA community can slow down, reflect, and appreciate the work of student artists from across the state.', chips: ['Event Logistics', 'Budget Management', 'Vendor Coordination', 'Creative Direction', 'Project Planning'], link: { label: 'View my artwork (pp. 16\u201319) \u2197', href: 'https://flipbooks.imsa.edu/irc/Heliotrope-2022/20-21/' } } ],
+        roles: [ { title: 'Logistics Director', period: '', desc: 'Organized open studio sessions such as a Bob Ross painting workshop and community murals on campus, built materials lists to purchase supplies, contacted facilities to reserve spaces, and managed event finances using spreadsheets. Heliotrope is IMSA\u2019s literary and arts magazine, tying together the artistic talents of students and staff, a space where the IMSA community can slow down, reflect, and appreciate the work of student artists from across the state.', chips: ['Event Logistics', 'Budget Management', 'Vendor Coordination', 'Creative Direction', 'Project Planning'], link: { label: 'View my artwork (pp. 16\u201319) \u2197', href: 'https://flipbooks.imsa.edu/irc/Heliotrope-2022/20-21/' } } ],
         photos: [],
       },
       bpa: {
         displayOrg: 'Business Professionals of America',
-        subtitle: 'State Qualifier — Personal Financial Management',
+        subtitle: 'State Qualifier: Personal Financial Management',
         roles: [ { title: 'State Qualifier, Personal Financial Management', period: '', desc: 'Qualified for the State Leadership Conference in the Personal Financial Management event. Business Professionals of America is the premier intra-curricular Career and Technical Student Organization, preparing a world-class workforce through the advancement of leadership, citizenship, academic, and technological skills.', chips: ['Financial Literacy', 'Competitive Presenting', 'Business Acumen', 'Time Management'] } ],
         photos: [],
       },
       exodus: {
         displayOrg: 'Exodus Tutoring',
         subtitle: 'Tutor',
-        roles: [ { title: 'Tutor', period: '', desc: 'Provided foundational guidance for 20 underrepresented students on school homework at Grace Church of DuPage, spending quality time interacting with the kids through card games and volleyball alongside tutoring — and saw significant improvement in students\u2019 grades.', chips: ['Mentorship', 'Patience', 'Communication', 'Community Service'] } ],
+        roles: [ { title: 'Tutor', period: '', desc: 'Provided foundational guidance for 20 underrepresented students on school homework at Grace Church of DuPage, spending quality time interacting with the kids through card games and volleyball alongside tutoring, and saw significant improvement in students\u2019 grades.', chips: ['Mentorship', 'Patience', 'Communication', 'Community Service'] } ],
         photos: [],
       },
       talent: {
         displayOrg: 'TALENT',
         subtitle: 'Member',
-        roles: [ { title: 'Member', period: '', desc: 'IMSA TALENT is a youth-led entrepreneurship program that helps students turn their ideas into real businesses, with hands-on project development, personalized feedback, and guidance from experienced business mentors. Through it, I worked alongside industry professionals to test ideas and solve problems as part of IMSA\u2019s broader focus on hands-on learning — building skills in leadership (guiding teams through project goals), adaptability (changing plans when problems arise), and venture creation (learning how to start and run a business).', chips: ['Leadership', 'Adaptability', 'Venture Creation', 'Entrepreneurship', 'Problem Solving'] } ],
+        roles: [ { title: 'Member', period: '', desc: 'IMSA TALENT is a youth-led entrepreneurship program that helps students turn their ideas into real businesses, with hands-on project development, personalized feedback, and guidance from experienced business mentors. Through it, I worked alongside industry professionals to test ideas and solve problems as part of IMSA\u2019s broader focus on hands-on learning, building skills in leadership (guiding teams through project goals), adaptability (changing plans when problems arise), and venture creation (learning how to start and run a business).', chips: ['Leadership', 'Adaptability', 'Venture Creation', 'Entrepreneurship', 'Problem Solving'] } ],
         photos: [],
       },
       tennis: {
@@ -1211,7 +1263,7 @@ class Component extends DCLogic {
       { id: 'cert-3', title: 'The Complete Introduction to Data Analytics with Tableau', issuer: 'Udemy', date: 'Aug 2024', ph: 'Drop certificate', src: 'assets/cert-tableau.png' },
       { id: 'cert-4', title: 'K1 Investment Management I', issuer: 'Girls Who Code', date: '2022', ph: 'Drop certificate', src: 'assets/cert-gwc.png' },
       { id: 'cert-5', title: 'What Is Generative AI', issuer: 'LinkedIn Learning', date: 'Jun 2026', ph: 'Drop certificate', src: 'assets/cert-genai.png' },
-      { id: 'cert-6', title: 'Copilot ACE — WINGS Program Completion', issuer: 'Caterpillar Inc.', date: 'Aug 2026', ph: 'Drop certificate', src: 'assets/cert-copilot-ace.png' },
+      { id: 'cert-6', title: 'Copilot ACE: WINGS Program Completion', issuer: 'Caterpillar Inc.', date: 'Aug 2026', ph: 'Drop certificate', src: 'assets/cert-copilot-ace.png' },
     ];
 
     const skillsTotal = skillCategories.reduce((sum, c) => sum + c.items.length, 0);
